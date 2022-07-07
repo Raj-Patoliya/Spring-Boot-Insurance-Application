@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<h1> Please wait for a moment....</h1>
+</body>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="js/jquery-1.12.5.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script type="text/javascript">   
+var options = {
+        "key": "rzp_test_7CfnnrcuQBSlTw",
+        "amount": "700000",
+        "currency": "INR",
+        "name": "Insure",
+        "description": "Payment Gateway",
+        "image": "images/logo.png",
+        "prefill": {
+            "name": "Insure",
+            "email": "naveen@insure.com",
+            "contact": "+91 9723330799"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#36454F"
+        },
+        "modal": {
+            "ondismiss": function() {
+                history.back();
+            }
+        }
+    };
+    
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function(response) {
+        alert(response.error.description);
+    });
+    rzp1.open();</script>
+
+<script>
+	
+window.setTimeout(function() {
+    window.location.href = 'http://localhost:8080/viewAppliedPolicy';
+}, 20000);
+</script>
+</html>

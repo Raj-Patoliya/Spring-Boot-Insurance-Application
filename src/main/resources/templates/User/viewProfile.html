@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insure - Insurance Company HTML Template</title>
+    <meta name="description" content="Insure - Insurance Company HTML Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
+    <meta name="keywords" content="insure, insurance, company, house insurance, car insurance, life insurance, motorcylcle insurance, boat insurance, travel insurance">
+    <meta name="author" content="rudhisasmito.com"> 
+	
+	<!-- ==============================================
+	Favicons
+	=============================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	
+	<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+	<link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/vendor/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/owl.theme.default.min.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/magnific-popup.css">
+	
+	<!-- ==============================================
+	Google Fonts
+	=============================================== -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,700i' rel='stylesheet' type='text/css'>
+	
+	<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	
+    <script type="text/javascript" src="js/vendor/modernizr.min.js"></script>
+
+</head>
+
+<body>
+
+	<!-- Load page -->
+	<div class="animationload">
+		<div class="loader"></div>
+	</div>
+	
+
+	<!-- TOPBAR -->
+	<div th:insert="User/CommonComponent.html :: header">
+	    </div>
+	    </div>
+
+ 	<!-- Page -->
+	<div class="section testimony">
+		<div class="container">
+			
+			<div class="row" th:each="userdata : ${user}">
+				
+				<div class="col-sm-6 col-md-3 col-md-offset-2">
+					<div class="people">
+						<img class="user-pic" th:src="*{'data:image/jpeg;base64,'+{user.photo}}" alt="">
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-5 col-md-offset-1" >
+					<div class="margin-bottom-70"></div>
+					<h2 class="title-agent" th:text="'Name:  '+ ${userdata.name}"></h2>
+					<h2 class="title-agent" th:text="'Age:  '+ ${userdata.age}"></h2>
+					<h2 class="title-agent" th:text="'Email:  '+ ${userdata.email}"></h2>					
+					<h2 class="title-agent" th:text="'Gender:  '+ ${userdata.gender}"></h2>
+					<h2 class="title-agent" th:text="'Mobile:  '+ ${userdata.mobile}"></h2>
+					<h2 class="title-agent" th:text="'Birthdate:  '+ ${userdata.dateOfBirth}"></h2>
+					<form th:action="@{editProfile}" method="post">
+						<input type="hidden" name="userId" th:value="${userdata.userId}" >
+						<button type="submit" class="btn btn-secondary" >Edit Profile</button>
+					</form>
+					<div class="margin-bottom-50"></div>
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- TESTIMONY --> 
+	 
+	<div th:insert="User/CommonComponent.html :: footer"></div> 
+
+	<!-- JS VENDOR -->
+	<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+	<script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.superslides.js"></script>
+	<script type="text/javascript" src="js/vendor/owl.carousel.js"></script>
+	<script type="text/javascript" src="js/vendor/bootstrap-hover-dropdown.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.magnific-popup.min.js"></script>
+	<!-- sendmail -->
+	<script type="text/javascript" src="js/vendor/validator.min.js"></script>
+	<script type="text/javascript" src="js/vendor/form-scripts.js"></script>
+	
+	<script type='text/javascript' src='https://maps.google.com/maps/api/js?sensor=false&#038;ver=4.1.5'></script>
+
+	<script type="text/javascript" src="js/script.js"></script>
+		
+</body>
+</html>

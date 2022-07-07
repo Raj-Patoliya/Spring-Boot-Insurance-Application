@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insure - Insurance Company HTML Template</title>
+    <meta name="description" content="Insure - Insurance Company HTML Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
+    <meta name="keywords" content="insure, insurance, company, house insurance, car insurance, life insurance, motorcylcle insurance, boat insurance, travel insurance">
+    <meta name="author" content="rudhisasmito.com"> 
+	
+	<!-- ==============================================
+	Favicons
+	=============================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	
+	<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+	<link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/vendor/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/owl.theme.default.min.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/magnific-popup.css">
+	
+	<!-- ==============================================
+	Google Fonts
+	=============================================== -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,700i' rel='stylesheet' type='text/css'>
+	
+	<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	
+    <script type="text/javascript" src="js/vendor/modernizr.min.js"></script>
+
+</head>
+
+<body>
+
+	<!-- Load page -->
+	<div class="animationload">
+		<div class="loader"></div>
+	</div>
+	
+
+	<!-- TOPBAR -->
+	<div th:insert="User/CommonComponent.html :: header">
+	    </div>
+	    </div>
+
+ 	<!-- Page -->
+	<div class="section testimony">
+		<div class="container">
+			
+<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<thead>
+										<tr>
+											<th>Sr No.</th>
+											<th>Parent Category</th>
+											<th>Sub Category</th>
+											<th>Policy Title</th>
+											<th>User's Name</th>
+											<th>Applied Date</th>
+											<th>Payment Status</th>
+											<th>Approval Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="policy,iterator : ${appliedPolicy}">
+											<td th:text="${iterator.index+1}"></td>
+											<td th:text="${policy.pCatId}"></td>
+											<td th:text="${policy.subCatId}"></td>
+											<td th:text="${policy.polName}"></td>
+											<td th:text="${policy.userName}"></td>
+											<td th:text="${policy.applyDate}"></td>
+											<td th:text="${policy.paymentStatus}"></td>
+											<td th:text="${policy.appliedStatus}"></td>
+											<td th:if="${policy.paymentStatus== 'Pending'}">
+											<form th:action="@{payment}" method ="post">											
+												<input type="hidden" th:value="${policy.appliedId}" name="appliedId">
+												<button class="btn btn-primary" style="width: 98px;font-size: 13px;padding-left: 21px;padding-top: 12px;height: 40px;">Payment</button>
+												</form>
+												</td>
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+		</div>
+	</div>
+	
+	<!-- TESTIMONY --> 
+	<div th:insert="User/CommonComponent.html :: footer"></div> 
+
+	<!-- JS VENDOR -->
+	<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+	<script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.superslides.js"></script>
+	<script type="text/javascript" src="js/vendor/owl.carousel.js"></script>
+	<script type="text/javascript" src="js/vendor/bootstrap-hover-dropdown.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.magnific-popup.min.js"></script>
+	<!-- sendmail -->
+	<script type="text/javascript" src="js/vendor/validator.min.js"></script>
+	<script type="text/javascript" src="js/vendor/form-scripts.js"></script>
+	
+	<script type='text/javascript' src='https://maps.google.com/maps/api/js?sensor=false&#038;ver=4.1.5'></script>
+
+	<script type="text/javascript" src="js/script.js"></script>
+		
+</body>
+</html>

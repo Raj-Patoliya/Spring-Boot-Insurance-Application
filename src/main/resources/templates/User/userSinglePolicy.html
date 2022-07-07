@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insure - Insurance Company HTML Template</title>
+    <meta name="description" content="Insure - Insurance Company HTML Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
+    <meta name="keywords" content="insure, insurance, company, house insurance, car insurance, life insurance, motorcylcle insurance, boat insurance, travel insurance">
+    <meta name="author" content="rudhisasmito.com"> 
+	
+	<!-- ==============================================
+	Favicons
+	=============================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	
+	<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+	<link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/vendor/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/owl.theme.default.min.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/magnific-popup.css">
+	
+	<!-- ==============================================
+	Google Fonts
+	=============================================== -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,700i' rel='stylesheet' type='text/css'>
+	
+	<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	
+    <script type="text/javascript" src="js/vendor/modernizr.min.js"></script>
+
+</head>
+
+<body>
+
+	<!-- Load page -->
+	<div class="animationload">
+		<div class="loader"></div>
+	</div>
+	
+
+	<!-- TOPBAR -->
+	<div th:insert="User/CommonComponent.html :: header">
+	    </div>
+
+ 	<!-- Page -->
+<div class="section project section-border" th:each="policy :${singlePolicy}">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-md-4 col-md-push-8">
+					<div class="widget info-detail">
+						<div class="widget-title">
+							Policy Details
+						</div>
+						<dl>
+							<dt>Assured:</dt>
+							<dd th:text="${policy.assured}"></dd>
+							<dt>Premium:</dt>
+							<dd th:text="${policy.premium}"></dd>
+							<dt>Tenure:</dt>
+							<dd th:text="${policy.tenure}"></dd>
+						</dl>
+					</div> 
+					<div class="widget download">
+						<form th:action="@{applyForPolicy}" method ="POST" th:object="${appliedPolicy}">
+							<input type="hidden" name="pCatId" th:value="${policy.pCatId}">
+							<input type="hidden" name="subCatId" th:value="${policy.subCatId}">
+							<input type="hidden" name="polName" th:value="${policy.polName}">
+							<input type="hidden" name="polId" th:value="${policy.polId}">
+							<button type ="submit" class="btn btn-primary btn-block btn-sidebar"><span ></span> Apply For Policy</button>
+						</form>
+					</div>
+					<div class="widget contact-info-sidebar">
+						<div class="widget-title">
+							Contact Info
+						</div>
+						<ul class="list-info">
+							<li>
+								<div class="info-icon">
+									<span class="fa fa-map-marker"></span>
+								</div>
+								<div class="info-text">99 S.t Jomblo Park Pekanbaru 28292. Indonesia</div> </li>
+							<li>
+								<div class="info-icon">
+									<span class="fa fa-phone"></span>
+								</div>
+								<div class="info-text">(0761) 654-123987</div>
+							</li>
+							<li>
+								<div class="info-icon">
+									<span class="fa fa-envelope"></span>
+								</div>
+								<div class="info-text">info@yoursite.com</div>
+							</li>
+							<li>
+								<div class="info-icon">
+									<span class="fa fa-clock-o"></span>
+								</div>
+								<div class="info-text">Mon - Sat 09:00 - 17:00</div>
+							</li>
+						</ul>
+					</div> 
+
+				</div>
+				<div class="col-sm-8 col-md-8 col-md-pull-4">
+					<div class="single-page">
+ 						<img th:src="*{'data:image/jpeg;base64,'+{policy.image}}" alt="" />
+ 
+						
+						<div class="margin-bottom-30"></div>
+						<h2 class="section-heading" th:text="${policy.polName}">
+							
+						</h2>
+						<p th:text="${policy.polDesc}"></p>
+						<h2 class="section-heading">
+							What We Do
+						</h2>
+						<ul class="checklist">
+							<li>100% Secure, consectetuer adipiscing elit, sed diam nonummy nibh euismod.</li>
+							<li>Easy to claim, sed diam nonummy nibh euismod. Lorem ipsum dolor sit amet.</li>
+							<li>More benefit nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+						</ul>
+					 </div>
+				</div>
+
+			</div>
+			
+		</div>
+	</div> 	
+	<!-- TESTIMONY --> 
+	<div th:insert="User/CommonComponent.html :: footer"></div> 
+
+	<!-- JS VENDOR -->
+	<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+	<script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.superslides.js"></script>
+	<script type="text/javascript" src="js/vendor/owl.carousel.js"></script>
+	<script type="text/javascript" src="js/vendor/bootstrap-hover-dropdown.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.magnific-popup.min.js"></script>
+	<!-- sendmail -->
+	<script type="text/javascript" src="js/vendor/validator.min.js"></script>
+	<script type="text/javascript" src="js/vendor/form-scripts.js"></script>
+	
+	<script type='text/javascript' src='https://maps.google.com/maps/api/js?sensor=false&#038;ver=4.1.5'></script>
+
+	<script type="text/javascript" src="js/script.js"></script>
+		
+</body>
+</html>
